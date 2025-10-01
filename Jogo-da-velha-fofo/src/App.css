@@ -1,0 +1,221 @@
+
+/* ----- THEME: FOFO (cute) - injected styles ----- */
+/* Soft pastel palette, rounded shapes, playful spacing */
+
+:root{
+  --bg: #FFF5FB; /* very pale pink */
+  --card: #FFFFFF;
+  --accent: #FFB6C1; /* light pink */
+  --accent-2: #FFD8E4; /* lighter */
+  --muted: #7A6B8A; /* soft grayish purple */
+  --primary: #FF7AA2; /* stronger pink */
+  --success: #BFFCC6; /* mint */
+  --tile: #FFF0F6;
+  --shadow: 0 8px 20px rgba(122, 107, 138, 0.12);
+  --small-shadow: 0 4px 12px rgba(122,107,138,0.08);
+  --radius: 16px;
+  --tile-radius: 12px;
+  --font-sans: 'Poppins', 'Nunito', 'Segoe UI', Roboto, Arial, sans-serif;
+}
+
+/* Import a friendly webfont (will work if online) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+html,body{
+  height:100%;
+  margin:0;
+  font-family:var(--font-sans);
+  background: linear-gradient(180deg, var(--bg), #FFF9FF);
+  color: #3b2b3b;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* Center game area */
+.game-container, .container, #app, body > main {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:100vh;
+  padding:24px;
+  box-sizing:border-box;
+}
+
+/* Card that holds the board */
+.board-card, .game-board, .card, .game {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding:20px;
+  max-width:520px;
+  width:100%;
+}
+
+/* Header title */
+h1, .title, .game-title {
+  font-weight:600;
+  letter-spacing:0.4px;
+  margin:0 0 12px 0;
+  color: #3b2b3b;
+  font-size:1.6rem;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+/* Cute badge */
+.title::before {
+  content: "💖";
+  display:inline-block;
+  transform:translateY(2px);
+}
+
+/* Board grid */
+.board, .grid, .game-grid, .tic-tac-toe {
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:12px;
+  margin-top:12px;
+}
+
+/* Tiles */
+.tile, .cell, .square, button.cell {
+  background: linear-gradient(180deg, var(--tile), #FFFFFF);
+  border-radius: var(--tile-radius);
+  height:100px;
+  min-height:80px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:2.6rem;
+  font-weight:700;
+  cursor:pointer;
+  border: 2px solid rgba(255,122,162,0.08);
+  box-shadow: var(--small-shadow);
+  transition: transform 140ms cubic-bezier(.2,.8,.2,1), box-shadow 140ms ease, background 140ms ease;
+  user-select:none;
+}
+
+/* Hover and active */
+.tile:hover, .cell:hover, .square:hover, button.cell:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 14px 30px rgba(122,107,138,0.14);
+}
+
+.tile:active, .cell:active {
+  transform: translateY(0) scale(0.99);
+}
+
+/* X and O styling */
+.tile.x { color: #FF4D85; text-shadow: 0 3px 0 rgba(255,122,162,0.08); }
+.tile.o { color: #6B9AFF; text-shadow: 0 3px 0 rgba(107,154,255,0.08); }
+
+/* Controls */
+.controls, .actions, .buttons {
+  margin-top:14px;
+  display:flex;
+  gap:10px;
+  justify-content:center;
+}
+
+button, .btn {
+  background: linear-gradient(180deg, var(--accent-2), var(--accent));
+  border: none;
+  padding:10px 16px;
+  border-radius:12px;
+  box-shadow: var(--small-shadow);
+  font-weight:600;
+  cursor:pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+button.secondary, .btn.secondary {
+  background: transparent;
+  border: 1px dashed rgba(122,107,138,0.12);
+  color: var(--muted);
+  padding:8px 12px;
+}
+
+/* Footer / info */
+.info {
+  margin-top:12px;
+  text-align:center;
+  color:var(--muted);
+  font-size:0.95rem;
+}
+
+/* Winner highlight */
+.win {
+  background: linear-gradient(90deg, rgba(255,122,162,0.12), rgba(107,154,255,0.06));
+  box-shadow: 0 18px 40px rgba(255,122,162,0.06);
+  transform: scale(1.02);
+}
+
+/* Confetti-like small hearts when win (pure CSS flourish) */
+@keyframes floatUp {
+  0% { transform: translateY(0) scale(0.9); opacity:0 }
+  50% { opacity:1 }
+  100% { transform: translateY(-40px) scale(1.1); opacity:0 }
+}
+.heart {
+  position:absolute;
+  font-size:18px;
+  animation: floatUp 1.2s ease forwards;
+  pointer-events:none;
+}
+
+/* Make cursor fun */
+* { cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36"><text y="28" font-size="28">❤</text></svg>') 8 8, auto; }
+
+/* Responsive tweaks */
+@media (max-width:560px){
+  .tile, .cell, .square { height:78px; font-size:2.2rem; min-height:66px; }
+  .board-card { padding:16px; border-radius:12px; }
+}
+
+/* END OF FOFO THEME */
+
+
+/* ORIGINAL CSS BELOW */
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
